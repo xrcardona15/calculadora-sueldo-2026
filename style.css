@@ -1,4 +1,4 @@
-/* Variables de color y fuentes */
+/* Variables de color */
 :root { 
     --primary: #2563eb; 
     --bg: #f8fafc; 
@@ -11,7 +11,7 @@ body {
     font-family: 'Inter', -apple-system, sans-serif; 
     background: var(--bg); 
     display: flex; 
-    flex-direction: column; /* Para que el footer se apile debajo */
+    flex-direction: column; 
     align-items: center; 
     padding: 20px; 
     color: var(--text); 
@@ -19,7 +19,7 @@ body {
     margin: 0;
 }
 
-/* Contenedor Principal */
+/* Contenedor Principal de la Calculadora */
 .calculator-container { 
     background: white; 
     max-width: 520px; 
@@ -28,6 +28,7 @@ body {
     border-radius: 24px; 
     box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
     box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 h1 { 
@@ -38,7 +39,7 @@ h1 {
     font-weight: 800; 
 }
 
-/* Cuadrícula de Inputs */
+/* Formulario */
 .input-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -63,18 +64,18 @@ label {
     letter-spacing: 0.025em; 
 }
 
-/* Estilo del Input de Salario Bruto */
 .input-with-symbol { 
     position: relative; 
     display: flex; 
     align-items: center; 
 }
 
+/* Input Salario Bruto: Negro y sin Negrita */
 .input-with-symbol input { 
     padding-right: 30px; 
-    font-weight: 400; /* Sin negrita como pediste */
+    font-weight: 400; 
     font-size: 1.1rem; 
-    color: #0f172a; /* Letras negras como pediste */
+    color: #0f172a; 
 }
 
 .input-with-symbol .symbol { 
@@ -84,7 +85,6 @@ label {
     font-weight: 600; 
 }
 
-/* Inputs y Selects */
 input, select { 
     padding: 10px 12px; 
     border: 1px solid var(--border); 
@@ -111,7 +111,6 @@ input:focus, select:focus {
     box-shadow: 0 0 0 3px rgba(37,99,235,0.1); 
 }
 
-/* Ajustes Avanzados */
 .advanced-toggle { 
     cursor: pointer; 
     color: var(--primary); 
@@ -124,9 +123,7 @@ input:focus, select:focus {
     background: #f0f7ff; 
 }
 
-.hidden { 
-    display: none; 
-}
+.hidden { display: none; }
 
 .checkbox-group { 
     flex-direction: row !important; 
@@ -135,25 +132,15 @@ input:focus, select:focus {
     margin-top: 5px; 
 }
 
-.checkbox-group input { 
-    width: auto; 
-    margin: 0; 
-}
+.checkbox-group input { width: auto; margin: 0; }
 
-/* Contenedor de Resultados */
+/* Resultados */
 .results-container { 
     margin-top: 1.5rem; 
     background: #f8fafc; 
     border-radius: 20px; 
     padding: 1.5rem; 
     border: 1px solid #f1f5f9; 
-}
-
-.main-net { 
-    text-align: center; 
-    border-bottom: 2px solid #f1f5f9; 
-    padding-bottom: 1.2rem; 
-    margin-bottom: 1.2rem; 
 }
 
 .main-net .value { 
@@ -171,10 +158,8 @@ input:focus, select:focus {
     border-radius: 99px; 
     font-weight: 700; 
     display: inline-block; 
-    margin-top: 5px; 
 }
 
-/* Desglose de Retenciones */
 .breakdown .row { 
     display: flex; 
     justify-content: space-between; 
@@ -182,49 +167,38 @@ input:focus, select:focus {
     font-size: 0.9rem; 
 }
 
-.row span:last-child { 
-    font-weight: 700; 
-    color: #0f172a; 
+.row span:last-child { font-weight: 700; color: #0f172a; }
+.neg { color: #e11d48 !important; }
+.highlight { border-top: 2px solid #e2e8f0; padding-top: 12px; margin-top: 8px; font-size: 1.1rem; }
+.normal-weight { font-weight: 400 !important; }
+
+/* Contenido SEO */
+.seo-content {
+    max-width: 800px;
+    margin: 1rem auto 3rem auto;
+    padding: 0 20px;
+    color: #475569;
+    line-height: 1.8;
 }
 
-.neg { 
-    color: #e11d48 !important; 
-}
+.seo-content h2 { color: #0f172a; font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
+.seo-content h3 { color: #1e293b; font-size: 1.3rem; margin-top: 2rem; border-left: 4px solid var(--primary); padding-left: 15px; }
+.seo-content p { margin-bottom: 1.2rem; font-size: 1rem; }
 
-.highlight { 
-    border-top: 2px solid #e2e8f0; 
-    padding-top: 12px; 
-    margin-top: 8px; 
-    font-size: 1.1rem; 
-}
-
-.normal-weight { 
-    font-weight: 400 !important; /* Para el % de IRPF sin negrita */
-}
-
-/* --- ESTILOS DEL FOOTER (LO NUEVO) --- */
+/* Footer */
 .site-footer {
     text-align: center;
-    margin-top: 2.5rem;
-    padding-bottom: 2rem;
+    padding: 2rem 0;
     font-size: 0.8rem;
     color: #64748b;
     width: 100%;
 }
 
-.footer-links {
-    margin-top: 0.8rem;
-}
+.footer-links { margin-top: 0.8rem; }
+.footer-links a { color: #2563eb; text-decoration: none; margin: 0 12px; font-weight: 500; }
+.footer-links a:hover { text-decoration: underline; }
 
-.footer-links a {
-    color: #2563eb;
-    text-decoration: none;
-    margin: 0 12px;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.footer-links a:hover {
-    color: #1d4ed8;
-    text-decoration: underline;
+@media (max-width: 600px) {
+    .seo-content h2 { font-size: 1.5rem; }
+    .seo-content h3 { font-size: 1.1rem; }
 }
