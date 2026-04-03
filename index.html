@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Salario Neto 2026 | España</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Calculadora Salario Neto</h1>
+        
+        <div class="input-grid">
+            <div class="input-group full">
+                <label>Salario Bruto Anual</label>
+                <div class="input-with-symbol">
+                    <input type="text" id="gross-salary-display" value="30.000">
+                    <span class="symbol">€</span>
+                </div>
+                <input type="hidden" id="gross-salary" value="30000">
+            </div>
+
+            <div class="input-group full">
+                <label>Categoría Profesional (Grupo de Cotización)</label>
+                <select id="category">
+                    <option value="0.90">Grupo 1: Ingenieros y Licenciados</option>
+                    <option value="0.85">Grupo 2: Ingenieros Técnicos, Peritos y Ayudantes</option>
+                    <option value="0.80">Grupo 3: Jefes Administrativos y de Taller</option>
+                    <option value="0.75">Grupo 4: Ayudantes no Titulados</option>
+                    <option value="0.75">Grupo 5: Oficiales Administrativos</option>
+                    <option value="0.70">Grupo 6: Subalternos</option>
+                    <option value="0.70">Grupo 7: Auxiliares Administrativos</option>
+                    <option value="0.65">Grupo 8: Oficiales de primera y segunda</option>
+                    <option value="0.65">Grupo 9: Oficiales de tercera y especialistas</option>
+                    <option value="0.60">Grupo 10: Peones</option>
+                    <option value="0.60">Grupo 11: Trabajadores menores de 18 años</option>
+                </select>
+            </div>
+
+            <div class="input-group full">
+                <label>Situación Familiar</label>
+                <select id="situation">
+                    <option value="3">Soltero/a o Casado/a (Pareja trabaja)</option>
+                    <option value="2">Casado/a (Cónyuge a cargo < 1500€)</option>
+                    <option value="1">Monoparental (Hijos solo a mi cargo)</option>
+                </select>
+            </div>
+
+            <div class="input-group full">
+                <label>Nº de Hijos</label>
+                <input type="number" id="children" value="0" min="0">
+            </div>
+
+            <div class="input-group full">
+                <label>Nº de Pagas</label>
+                <select id="payments">
+                    <option value="12" selected>12 pagas</option>
+                    <option value="14">14 pagas</option>
+                </select>
+            </div>
+
+            <div class="advanced-toggle full" onclick="document.getElementById('advanced-fields').classList.toggle('hidden')">
+                <span>⚙️ Ajustes Avanzados (Discapacidad, Movilidad...)</span>
+            </div>
+
+            <div id="advanced-fields" class="full hidden">
+                <div class="input-grid">
+                    <div class="input-group full">
+                        <label>Grado de Discapacidad</label>
+                        <select id="disability">
+                            <option value="0">Ninguna</option>
+                            <option value="3000">Entre 33% y 65%</option>
+                            <option value="9000">Más del 65% o con ayuda</option>
+                        </select>
+                    </div>
+                    <div class="input-group full checkbox-group">
+                        <input type="checkbox" id="mobility">
+                        <label for="mobility">Movilidad Geográfica (Traslado municipio)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-container">
+            <div class="main-net">
+                <span class="label" id="text-monthly-label">Sueldo Neto Mensual</span>
+                <div id="net-monthly" class="value">0,00 €</div>
+                <div id="extra-info" class="retention-badge" style="display: none;">Paga Extra: 0,00 €</div>
+            </div>
+            
+            <div class="breakdown">
+                <div class="row">
+                    <span>Retenciones IRPF (<span id="retention-pct" class="normal-weight">0</span>%)</span> 
+                    <span id="res-irpf" class="neg"></span>
+                </div>
+                <div class="row">
+                    <span>Cuotas a la Seguridad Social (6.47%)</span> 
+                    <span id="res-ss" class="neg"></span>
+                </div>
+                <div class="row highlight">
+                    <span>Sueldo neto anual</span> 
+                    <span id="res-net-annual"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
