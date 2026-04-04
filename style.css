@@ -202,3 +202,113 @@ input:focus, select:focus {
     .seo-content h2 { font-size: 1.5rem; }
     .seo-content h3 { font-size: 1.1rem; }
 }
+/* --- BOTONES DE COMPARTIR --- */
+.share-container {
+    margin-top: 1.5rem;
+    text-align: center;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 1.2rem;
+}
+
+.share-container p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.share-btn {
+    text-decoration: none;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp { 
+    background-color: #25D366; 
+}
+
+.x-twitter { 
+    background-color: #000000; 
+}
+
+/* --- BANNER DE COOKIES --- */
+.cookie-overlay {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: #1e293b;
+    color: white;
+    padding: 1.2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.cookie-content p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+.cookie-content a {
+    color: #60a5fa;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.cookie-content button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+    margin-top: 8px;
+}
+
+.cookie-content button:hover {
+    background: #1d4ed8;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .share-buttons {
+        flex-direction: column;
+    }
+    .share-btn {
+        justify-content: center;
+    }
+}
