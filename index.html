@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FKY16GZBRH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKY16GZBRH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FKY16GZBRH');
+    </script>
 
-  gtag('config', 'G-FKY16GZBRH');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Salario Neto 2026 | España - Nómina Online</title>
     
     <meta name="description" content="Calculadora de sueldo neto en España para 2026. Calcula tu nómina mensual, retenciones de IRPF y Seguridad Social según tu grupo de cotización.">
     <meta name="keywords" content="calculadora sueldo neto, irpf 2026, nomina españa, neto mensual, salario bruto">
-    <meta property="og:title" content="Calculadora Salario Neto 2026 | España">
-    <meta property="og:description" content="Calcula tu sueldo neto real de forma fácil, gratuita y actualizada a la normativa de 2026.">
-    <meta property="og:type" content="website">
-
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -118,8 +114,10 @@
                     <span>Sueldo neto anual</span> 
                     <span id="res-net-annual"></span>
                 </div>
-            </div> <div class="share-container">
-                  <p>¿Te ha servido? Comparte esta calculadora:</p>
+            </div>
+
+            <div class="share-container">
+                <p>¿Te ha servido? Comparte esta calculadora:</p>
                 <div class="share-buttons">
                     <a href="https://api.whatsapp.com/send?text=He%20calculado%20mi%20sueldo%20neto%20para%202026%20en%20esta%20web%2C%20es%20s%C3%BAper%20precisa%3A%20https%3A%2F%2Fcalculadoraneto.es" target="_blank" class="share-btn whatsapp">
                         WhatsApp
@@ -143,11 +141,18 @@
         <p>Todos los trabajadores aportan un porcentaje de su sueldo a la Seguridad Social. En nuestra calculadora aplicamos el tipo actualizado del 6.47%, que incluye el Mecanismo de Equidad Intergeneracional (MEI).</p>
 
         <h3>3. Diferencia entre 12 y 14 pagas</h3>
-        <p>Muchos convenios establecen el cobro en 14 pagas. Es importante entender que el <strong>sueldo neto anual es el mismo</strong>; lo único que cambia es cómo se distribuye el dinero a lo largo del año.</p>
+        <p>Muchos convenios establecen el cobro en 14 pagas. Es importante entender que el sueldo neto anual es el mismo; lo único que cambia es cómo se distribuye el dinero a lo largo del año.</p>
 
         <h3>4. Grupos de Cotización</h3>
         <p>Tu categoría profesional determina las bases mínimas y máximas de tu nómina. No es lo mismo un Ingeniero (Grupo 1) que un Auxiliar (Grupo 7), ya que afecta directamente al cálculo de las pagas extras.</p>
     </section>
+
+    <div id="cookie-banner" class="cookie-overlay">
+        <div class="cookie-content">
+            <p>Utilizamos cookies para mejorar tu experiencia y analizar el tráfico. Al continuar navegando, aceptas nuestra <a href="cookies.html">política de cookies</a>.</p>
+            <button onclick="acceptCookies()">Aceptar</button>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <p>&copy; 2026 Calculadora Neto España</p>
@@ -159,5 +164,18 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+    function acceptCookies() {
+        localStorage.setItem('cookiesAceptadas', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    window.onload = function() {
+        if(localStorage.getItem('cookiesAceptadas')) {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    }
+    </script>
 </body>
 </html>
