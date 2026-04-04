@@ -128,11 +128,19 @@
 
     <section class="seo-content">
         <h2>¿Cómo calcular tu sueldo neto en España para 2026?</h2>
-        <p>Calcular el salario neto real es fundamental para planificar tus finanzas personales. A diferencia del salario bruto, el sueldo neto es lo que realmente recibes tras las retenciones.</p>
+        <p>Calcular el salario neto real es fundamental para planificar tus finanzas personales. A diferencia del salario bruto (la cantidad total que paga la empresa), el sueldo neto es lo que realmente recibes en tu cuenta bancaria tras aplicar las retenciones obligatorias.</p>
+
         <h3>1. Retenciones de IRPF</h3>
-        <p>El IRPF es un impuesto progresivo que varía según tu situación familiar en 2026.</p>
-        <h3>2. Seguridad Social</h3>
-        <p>Aplicamos el tipo del 6.47%, incluyendo el mecanismo MEI actualizado.</p>
+        <p>El Impuesto sobre la Renta de las Personas Físicas (IRPF) es un impuesto progresivo. En 2026, los tramos se ajustan según la situación familiar (hijos, cónyuge a cargo) y personal (discapacidad o movilidad geográfica).</p>
+
+        <h3>2. Cotizaciones a la Seguridad Social</h3>
+        <p>Todos los trabajadores aportan un porcentaje de su sueldo a la Seguridad Social. En nuestra calculadora aplicamos el tipo actualizado del 6.47%, que incluye el Mecanismo de Equidad Intergeneracional (MEI).</p>
+
+        <h3>3. Diferencia entre 12 y 14 pagas</h3>
+        <p>Muchos convenios establecen el cobro en 14 pagas. Es importante entender que el <strong>sueldo neto anual es el mismo</strong>; lo único que cambia es cómo se distribuye el dinero a lo largo del año.</p>
+
+        <h3>4. Grupos de Cotización</h3>
+        <p>Tu categoría profesional determina las bases mínimas y máximas de tu nómina. No es lo mismo un Ingeniero (Grupo 1) que un Auxiliar (Grupo 7), ya que afecta directamente al cálculo de las pagas extras.</p>
     </section>
 
     <div id="cookie-banner" class="cookie-overlay">
@@ -161,12 +169,10 @@
         localStorage.setItem('cookiesAceptadas', 'true');
         document.getElementById('cookie-banner').style.display = 'none';
     }
-
     function rejectCookies() {
         localStorage.setItem('cookiesAceptadas', 'false');
         document.getElementById('cookie-banner').style.display = 'none';
     }
-
     window.onload = function() {
         if(localStorage.getItem('cookiesAceptadas')) {
             document.getElementById('cookie-banner').style.display = 'none';
