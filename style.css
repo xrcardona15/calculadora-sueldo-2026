@@ -267,3 +267,11 @@ table th { background: #f8fafc; color: #64748b; font-size: 0.8rem; text-transfor
 .btn-reject { background: transparent; border: 1px solid #475569; color: #cbd5e1; padding: 8px 20px; border-radius: 8px; cursor: pointer; }
 
 /* ... (Resto del responsivo) ... */
+
+/* --- ESTILO PARA EL GRÁFICO --- */
+.chart-box {
+    width: 100%;
+    max-width: 350px; /* Tamaño máximo para que no sea gigante */
+    height: 300px;
+    margin: 30px auto; /* Centrado */
+}
