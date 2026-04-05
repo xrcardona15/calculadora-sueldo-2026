@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Indemnización por Despido 2026 | España</title>
+    <title>Calculadora de Indemnización Profesional 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,26 +30,28 @@
             </div>
 
             <div class="input-group full">
-                <label for="exit-type">Motivo del Despido</label>
+                <label for="exit-type">Tipo de Extinción / Despido</label>
                 <select id="exit-type">
-                    <option value="20">Despido Objetivo / ERE (20 días/año)</option>
-                    <option value="33">Despido Improcedente (33 días/año)</option>
+                    <option value="improcedente">Despido Improcedente (33 días/año)</option>
+                    <option value="voluntad_incumplimiento">Incumplimiento grave del empresario (33 días/año)</option>
+                    <option value="objetivo">Causas Objetivas / ERE / Modif. Sustancial (20 días/año)</option>
+                    <option value="temporal">Fin de Contrato Temporal (12 días/año)</option>
                 </select>
             </div>
         </div>
 
         <div class="results-container" style="background: #f1f5f9; border: 2px solid var(--primary);">
             <div class="main-net">
-                <span class="label">Indemnización Estimada</span>
+                <span class="label">Total Indemnización</span>
                 <div id="res-indemnity" class="value" style="color: var(--primary);">0,00 €</div>
             </div>
             <div class="breakdown">
                 <div class="row">
-                    <span>Antigüedad total:</span>
-                    <span id="res-years">0 años</span>
+                    <span>Meses trabajados:</span>
+                    <span id="res-months">0</span>
                 </div>
                 <div class="row">
-                    <span>Salario día:</span>
+                    <span>Salario diario:</span>
                     <span id="res-daily">0,00 €</span>
                 </div>
             </div>
@@ -64,28 +66,44 @@
             const gross = parseFloat(document.getElementById('gross-salary-ind').value) || 0;
             const start = new Date(document.getElementById('start-date').value);
             const end = new Date(document.getElementById('end-date').value);
-            const daysPerYear = parseFloat(document.getElementById('exit-type').value);
+            const type = document.getElementById('exit-type').value;
 
             if (!start.getTime() || !end.getTime() || end < start) return;
 
-            // Diferencia en días
-            const diffTime = Math.abs(end - start);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            
-            const years = diffDays / 365;
+            // 1. Cálculo de meses (se redondean los meses completos para la indemnización)
+            let months = (end.getFullYear() - start.getFullYear()) * 12;
+            months -= start.getMonth();
+            months += end.getMonth();
+            if (end.getDate() >= start.getDate()) months++; 
+            if (months < 0) months = 0;
+
             const dailySalary = gross / 365;
-            
-            // Lógica española: días de indemnización = (días por año * años trabajados)
-            // Limitado a topes legales (ej: 12 mensualidades para objetivo, 24 para improcedente)
-            let totalIndemnity = dailySalary * daysPerYear * years;
-            
-            // Aplicar topes legales aproximados
-            const maxMonths = (daysPerYear === 20) ? 12 : 24;
+            let totalIndemnity = 0;
+
+            // 2. Aplicación de fórmulas según la tabla
+            switch(type) {
+                case 'improcedente':
+                case 'voluntad_incumplimiento':
+                    // Fórmula: Salario diario x meses x 2,75
+                    totalIndemnity = dailySalary * months * 2.75;
+                    break;
+                case 'objetivo':
+                    // Fórmula: Salario diario x meses x (20 / 12)
+                    totalIndemnity = dailySalary * months * (20 / 12);
+                    break;
+                case 'temporal':
+                    // Fórmula: Salario diario x días x 12 / 365 (simplificado a meses x 1)
+                    totalIndemnity = dailySalary * months * (12 / 12);
+                    break;
+            }
+
+            // Topes legales (24 mensualidades para improcedente, 12 para objetivo)
+            const maxMonths = (type.includes('improcedente')) ? 24 : 12;
             const limit = (gross / 12) * maxMonths;
             if (totalIndemnity > limit) totalIndemnity = limit;
 
             document.getElementById('res-indemnity').innerText = totalIndemnity.toLocaleString('es-ES', {minimumFractionDigits: 2}) + " €";
-            document.getElementById('res-years').innerText = years.toFixed(2) + " años";
+            document.getElementById('res-months').innerText = months;
             document.getElementById('res-daily').innerText = dailySalary.toFixed(2) + " €";
         }
     </script>
