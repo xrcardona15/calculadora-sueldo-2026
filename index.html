@@ -13,19 +13,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Salario Neto 2026 | España - Nómina Online</title>
     
-    <meta name="description" content="Calculadora de sueldo neto en España para 2026. Calcula tu nómina mensual, retenciones de IRPF y Seguridad Social según tu grupo de cotización.">
-    <meta name="keywords" content="calculadora sueldo neto, irpf 2026, nomina españa, neto mensual, salario bruto">
+    <meta name="description" content="Calcula tu sueldo neto mensual y anual en España para 2026 de forma precisa con IRPF y Seguridad Social actualizados.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Calculadora Salario Neto España",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+    }
+    </script>
 </head>
 <body>
 
     <div class="calculator-container">
-        <h1>Calculadora Salario Neto</h1>
+        <h1>Calculadora Salario Neto 2026</h1>
         
         <div class="input-grid">
             <div class="input-group full">
-                <label>Salario Bruto Anual</label>
+                <label for="gross-salary-display">Salario Bruto Anual</label>
                 <div class="input-with-symbol">
                     <input type="text" id="gross-salary-display" value="30.000">
                     <span class="symbol">€</span>
@@ -33,39 +42,23 @@
                 <input type="hidden" id="gross-salary" value="30000">
             </div>
 
-            <div class="input-group full">
-                <label>Categoría Profesional (Grupo de Cotización)</label>
-                <select id="category">
-                    <option value="0.90">Grupo 1: Ingenieros y Licenciados</option>
-                    <option value="0.85">Grupo 2: Ingenieros Técnicos, Peritos y Ayudantes</option>
-                    <option value="0.80">Grupo 3: Jefes Administrativos y de Taller</option>
-                    <option value="0.75">Grupo 4: Ayudantes no Titulados</option>
-                    <option value="0.75">Grupo 5: Oficiales Administrativos</option>
-                    <option value="0.70">Grupo 6: Subalternos</option>
-                    <option value="0.70">Grupo 7: Auxiliares Administrativos</option>
-                    <option value="0.65">Grupo 8: Oficiales de primera y segunda</option>
-                    <option value="0.65">Grupo 9: Oficiales de tercera y especialistas</option>
-                    <option value="0.60">Grupo 10: Peones</option>
-                    <option value="0.60">Grupo 11: Trabajadores menores de 18 años</option>
-                </select>
+            <div class="input-grid-half">
+                <div class="input-group">
+                    <label for="situation">Situación Familiar</label>
+                    <select id="situation">
+                        <option value="3">Soltero/a o Casado/a (Pareja trabaja)</option>
+                        <option value="2">Casado/a (Cónyuge no trabaja)</option>
+                        <option value="1">Monoparental (Hijos a mi cargo)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="children">Nº de Hijos</label>
+                    <input type="number" id="children" value="0" min="0">
+                </div>
             </div>
 
             <div class="input-group full">
-                <label>Situación Familiar</label>
-                <select id="situation">
-                    <option value="3">Soltero/a o Casado/a (Pareja trabaja)</option>
-                    <option value="2">Casado/a (Cónyuge a cargo < 1500€)</option>
-                    <option value="1">Monoparental (Hijos solo a mi cargo)</option>
-                </select>
-            </div>
-
-            <div class="input-group full">
-                <label>Nº de Hijos</label>
-                <input type="number" id="children" value="0" min="0">
-            </div>
-
-            <div class="input-group full">
-                <label>Nº de Pagas</label>
+                <label for="payments">Número de Pagas</label>
                 <select id="payments">
                     <option value="12" selected>12 pagas</option>
                     <option value="14">14 pagas</option>
@@ -73,22 +66,22 @@
             </div>
 
             <div class="advanced-toggle full" onclick="document.getElementById('advanced-fields').classList.toggle('hidden')">
-                <span>⚙️ Ajustes Avanzados (Discapacidad, Movilidad...)</span>
+                <span>⚙️ Ajustes Adicionales (Discapacidad, Movilidad)</span>
             </div>
 
             <div id="advanced-fields" class="full hidden">
                 <div class="input-grid">
-                    <div class="input-group full">
-                        <label>Grado de Discapacidad</label>
+                    <div class="input-group">
+                        <label for="disability">Discapacidad</label>
                         <select id="disability">
                             <option value="0">Ninguna</option>
-                            <option value="3000">Entre 33% y 65%</option>
-                            <option value="9000">Más del 65% o con ayuda</option>
+                            <option value="3000">33% - 65%</option>
+                            <option value="9000">> 65%</option>
                         </select>
                     </div>
-                    <div class="input-group full checkbox-group">
+                    <div class="input-group checkbox-group">
                         <input type="checkbox" id="mobility">
-                        <label for="mobility">Movilidad Geográfica (Traslado municipio)</label>
+                        <label for="mobility">Movilidad Geográfica</label>
                     </div>
                 </div>
             </div>
@@ -98,20 +91,20 @@
             <div class="main-net">
                 <span class="label" id="text-monthly-label">Sueldo Neto Mensual</span>
                 <div id="net-monthly" class="value">0,00 €</div>
-                <div id="extra-info" class="retention-badge" style="display: none;">Paga Extra: 0,00 €</div>
+                <div id="extra-info" class="retention-badge" style="display: none;"></div>
             </div>
             
             <div class="breakdown">
                 <div class="row">
-                    <span>Retenciones IRPF (<span id="retention-pct" class="normal-weight">0</span>%)</span> 
+                    <span>Retención IRPF (<span id="retention-pct">0</span>%)</span> 
                     <span id="res-irpf" class="neg"></span>
                 </div>
                 <div class="row">
-                    <span>Cuotas a la Seguridad Social (6.47%)</span> 
+                    <span>Seguridad Social</span> 
                     <span id="res-ss" class="neg"></span>
                 </div>
                 <div class="row highlight">
-                    <span>Sueldo neto anual</span> 
+                    <span>Neto Anual "Limpio"</span> 
                     <span id="res-net-annual"></span>
                 </div>
             </div>
@@ -119,41 +112,39 @@
             <div class="share-container">
                 <p>¿Te ha servido? Comparte esta calculadora:</p>
                 <div class="share-buttons">
-                    <a href="https://api.whatsapp.com/send?text=He%20calculado%20mi%20sueldo%20neto%20para%202026%20en%20esta%20web%2C%20es%20s%C3%BAper%20precisa%3A%20https%3A%2F%2Fcalculadoraneto.es" target="_blank" class="share-btn whatsapp">WhatsApp</a>
-                    <a href="https://twitter.com/intent/tweet?text=Calcula%20tu%20sueldo%20neto%20en%20España%20para%202026%20con%20esta%20herramienta%20gratuita%3A&url=https%3A%2F%2Fcalculadoraneto.es" target="_blank" class="share-btn x-twitter">Compartir en X</a>
+                    <a href="https://api.whatsapp.com/send?text=He%20calculado%20mi%20sueldo%20neto%20para%202026%20en%20esta%20web%2C%20es%20s%C3%BAper%20precisa%3A%20https%3A%2F%2Ftusitio.com" target="_blank" class="share-btn whatsapp">WhatsApp</a>
+                    <a href="https://twitter.com/intent/tweet?text=Calcula%20tu%20sueldo%20neto%20en%20España%20para%202026%20con%20esta%20herramienta%20gratuita%3A&url=https%3A%2F%2Ftusitio.com" target="_blank" class="share-btn x-twitter">Compartir en X</a>
                 </div>
             </div>
         </div>
     </div>
 
     <section class="seo-content">
-    <h2>Calculadora de Sueldo Neto 2026: ¿Cómo afecta la nueva fiscalidad a tu nómina?</h2>
-    <p>Calcular el <strong>salario neto en España</strong> para el ejercicio 2026 requiere comprender los cambios en las cotizaciones y los tramos del IRPF. Nuestra herramienta utiliza los tipos impositivos actualizados para ofrecerte una estimación precisa de tu sueldo mensual.</p>
+        <h2>Tramos del IRPF 2026 en España</h2>
+        <p>El sistema fiscal español es progresivo: quien más gana, paga un porcentaje mayor. Aquí tienes la tabla de retenciones estatales estimadas para el ejercicio 2026:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Base Imponible</th>
+                    <th>Tipo Aplicable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Hasta 12.450€</td><td>19%</td></tr>
+                <tr><td>12.450€ - 20.200€</td><td>24%</td></tr>
+                <tr><td>20.200€ - 35.200€</td><td>30%</td></tr>
+                <tr><td>35.200€ - 60.000€</td><td>37%</td></tr>
+                <tr><td>Más de 60.000€</td><td>45%</td></tr>
+            </tbody>
+        </table>
 
-    <div class="info-grid">
-        <div class="info-card">
-            <h3>Tramos IRPF 2026</h3>
-            <p>El IRPF es un impuesto progresivo. En 2026, los tramos estatales y autonómicos (estimados) se dividen así:</p>
-            <ul>
-                <li>Hasta 12.450€: 19%</li>
-                <li>De 12.450€ a 20.200€: 24%</li>
-                <li>De 20.200€ a 35.200€: 30%</li>
-                <li>De 35.200€ a 60.000€: 37%</li>
-                <li>Más de 60.000€: 45% a 47%</li>
-            </ul>
-        </div>
-    </div>
-
-    <h3>Novedades en la Seguridad Social: El MEI</h3>
-    <p>En 2026, la cuota de la Seguridad Social incluye el <strong>Mecanismo de Equidad Intergeneracional (MEI)</strong>. Este tipo impositivo ha ido subiendo anualmente para garantizar la sostenibilidad de las pensiones, situándose en el 1% (repartido entre empresa y trabajador), lo que explica por qué tu sueldo neto puede ser ligeramente inferior al de años anteriores a pesar de mantener el mismo bruto.</p>
-
-    <h3>¿Por qué usar nuestra calculadora de nómina?</h3>
-    <p>A diferencia de una tabla simple, nuestra calculadora tiene en cuenta el <strong>Mínimo Personal y Familiar</strong>, que varía según si tienes hijos a cargo, tu estado civil o si posees algún grado de discapacidad. Además, desglosamos el cálculo tanto para 12 pagas como para 14 pagas (pagas extras prorrateadas o no).</p>
-
-    <blockquote>
-        <strong>Nota del experto:</strong> Recuerda que el resultado es una estimación. El cálculo final de tu nómina puede variar según el convenio colectivo de tu sector o retribuciones en especie como cheques restaurante o seguro médico.
-    </blockquote>
-</section>
+        <h3>¿Cómo influyen los hijos en mi nómina?</h3>
+        <p>Tener hijos reduce el impuesto que pagas gracias al <strong>Mínimo Personal y Familiar</strong>. El Estado considera que parte de tu sueldo debe destinarse obligatoriamente al cuidado de tu familia, por lo que esa cantidad queda libre de impuestos en tu declaración.</p>
+        
+        <h3>Diferencia entre 12 y 14 pagas</h3>
+        <p>Cobrar en 14 pagas no significa ganar más dinero al año. Simplemente, tu sueldo neto anual se reparte de forma distinta. En el modelo de 14 pagas, las gratificaciones extraordinarias suelen ser un poco mayores porque no descuentan la Seguridad Social de nuevo, ya que esta se prorratea mensualmente.</p>
+    </section>
 
     <div id="cookie-banner" class="cookie-overlay">
         <div class="cookie-content">
@@ -166,7 +157,7 @@
     </div>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Calculadora Neto España</p>
+        <p>&copy; 2026 Calculadora Neto España | Planifica tus ahorros</p>
         <div class="footer-links">
             <a href="aviso-legal.html">Aviso Legal</a>
             <a href="privacidad.html">Privacidad</a>
