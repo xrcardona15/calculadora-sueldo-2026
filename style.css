@@ -275,3 +275,47 @@ table th { background: #f8fafc; color: #64748b; font-size: 0.8rem; text-transfor
     height: 300px;
     margin: 30px auto; /* Centrado */
 }
+
+/* --- BLOQUE PROMO NUEVA HERRAMIENTA --- */
+.tool-promo {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #bae6fd;
+    padding: 1.8rem;
+    border-radius: 20px;
+    margin: 20px 0; /* Para que quede dentro del contenedor blanco */
+    text-align: center;
+}
+
+.promo-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.tool-promo h3 { 
+    margin: 0; 
+    color: #0369a1; 
+    font-size: 1.2rem; 
+    font-weight: 800;
+}
+
+.tool-promo p { 
+    font-size: 0.9rem; 
+    color: #0c4a6e; 
+    margin: 0.8rem 0 1.2rem 0; 
+}
+
+.promo-link {
+    display: inline-block;
+    background: #0284c7;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.promo-link:hover { 
+    background: #0369a1;
+    transform: translateY(-2px); 
+}
