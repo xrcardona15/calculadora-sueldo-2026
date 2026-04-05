@@ -17,6 +17,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -100,13 +102,17 @@
                     <span id="res-irpf" class="neg"></span>
                 </div>
                 <div class="row">
-                    <span>Seguridad Social</span> 
+                    <span>Seguridad Social (<span id="ss-pct">6.47</span>%)</span> 
                     <span id="res-ss" class="neg"></span>
                 </div>
                 <div class="row highlight">
                     <span>Neto Anual "Limpio"</span> 
                     <span id="res-net-annual"></span>
                 </div>
+            </div>
+
+            <div class="chart-box">
+                <canvas id="salaryChart"></canvas>
             </div>
 
             <div class="share-container">
