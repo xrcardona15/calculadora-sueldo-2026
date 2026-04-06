@@ -319,3 +319,23 @@ table th { background: #f8fafc; color: #64748b; font-size: 0.8rem; text-transfor
     background: #0369a1;
     transform: translateY(-2px); 
 }
+
+.faq-section {
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.faq-item h4 {
+    color: #007bff;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.faq-item p {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #444;
+}
