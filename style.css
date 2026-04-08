@@ -320,22 +320,56 @@ table th { background: #f8fafc; color: #64748b; font-size: 0.8rem; text-transfor
     transform: translateY(-2px); 
 }
 
-.faq-section {
-    margin-top: 40px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #eee;
+/* Estilos para el Acordeón SEO */
+.faq-container {
+    margin-top: 20px;
+    text-align: left;
 }
 
-.faq-item h4 {
-    color: #007bff;
-    margin-bottom: 5px;
+.faq-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 15px 10px;
+    text-align: left;
     font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s;
 }
 
-.faq-item p {
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    color: #444;
+.faq-question:hover {
+    color: #007bff;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f9f9f9;
+}
+
+.faq-answer p {
+    padding: 15px;
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Ajusta según el largo del texto */
+}
+
+.faq-item.active span {
+    transform: rotate(45deg);
+    display: inline-block;
 }
