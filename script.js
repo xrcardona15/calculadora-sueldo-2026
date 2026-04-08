@@ -126,3 +126,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initChart();
     calculate();
 });
+
+// Lógica para los desplegables FAQ
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');
+        
+        // Cambiar el signo de + a -
+        const span = button.querySelector('span');
+        span.textContent = faqItem.classList.contains('active') ? '−' : '+';
+    });
+});
